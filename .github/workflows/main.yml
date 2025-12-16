@@ -21,6 +21,7 @@ permissions:
 
 jobs:
   build:
+    name: Build Container Image
     uses: ardikabs/etc/.github/workflows/.shared-build.yaml@master
     with:
       repository: ghcr.io/${{ github.repository }}

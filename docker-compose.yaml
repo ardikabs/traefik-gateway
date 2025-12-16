@@ -13,13 +13,11 @@ services:
     env_file:
       - .env
     ports:
-      - "80:80" # Exposes port 80 for web
-      - "8000:8000" # Exposes port 8000 for ping (health probe)
-      - "8080:8080" # Exposes port 8080 for the dashboard/api
-      - "9000:9000" # Exposes port 9000 for fallback
+      - "7080:80" # Exposes port 80 for web
+      - "8001:8000" # Exposes port 8000 for ping (health probe)
+      - "8081:8080" # Exposes port 8080 for the dashboard/api
+      - "9001:9000" # Exposes port 9000 for fallback
     volumes:
-      - "./envs/staging/traefik.yaml:/etc/traefik/traefik.yaml"
-      - "./envs/staging/conf.d:/etc/traefik/conf.d"
       - "/var/run/docker.sock:/var/run/docker.sock" # Allows Traefik to interact with Docker
 
   echoserver:

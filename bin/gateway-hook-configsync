@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+mkdir -p /etc/traefik
+
 GATEWAY_WORKDIR="${GITSYNC_ROOT:-}/.worktrees/${GITSYNC_HASH:-}"
 GATEWAY_CONFIG_PATH="${GATEWAY_CONFIG_PATH:?Gateway config path variable is required}"
 GATEWAY_CONFIG_PATH="${GATEWAY_CONFIG_PATH#/}" # strip the leading slash
