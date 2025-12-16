@@ -1,6 +1,6 @@
 FROM registry.k8s.io/git-sync/git-sync:v4.5.0 AS git-sync
 
-FROM traefik:v3.0
+FROM traefik:v3.6
 
 COPY --from=git-sync /git-sync /usr/local/bin/git-sync
 COPY bin/ /usr/local/bin/
