@@ -1,0 +1,42 @@
+name: Build & Release Container Image
+
+run-name: Build image for ${{ github.ref_name }}
+
+on:
+  push:
+    tags:
+      - "v*" # react on any tag starting with "v", but expected to be a semantic version
+
+  # Optional: keep manual trigger
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Container image tag to build
+        required: true
+        default: latest
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    uses: ardikabs/etc/.github/workflows/.shared-build.yaml@master
+    with:
+      repository: ghcr.io/${{ github.repository }}
+      name: gateway
+      tag: ${{ github.ref_type == 'tag' && github.ref_name || inputs.tag }}
+      context: .
+    secrets: inherit
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref_type == 'tag'
+    steps:
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
