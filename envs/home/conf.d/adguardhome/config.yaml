@@ -1,0 +1,12 @@
+http:
+  routers:
+    adguardhome:
+      entryPoints:
+        - websecure
+      rule: "Host(`guard.local0.ardikabs.com`)"
+      service: adguardhome@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "guard.local0.ardikabs.com"
+
