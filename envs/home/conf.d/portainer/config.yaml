@@ -1,0 +1,12 @@
+http:
+  routers:
+    portainer:
+      entryPoints:
+        - websecure
+      rule: "Host(`dock.local0.ardikabs.com`)"
+      service: portainer@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "dock.local0.ardikabs.com"
+
