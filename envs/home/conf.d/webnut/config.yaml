@@ -1,6 +1,6 @@
 http:
   routers:
-    portainer:
+    webnut:
       entryPoints:
         - websecure
       rule: "Host(`nut.local0.ardikabs.com`)"
