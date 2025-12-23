@@ -1,0 +1,12 @@
+http:
+  routers:
+    portainer:
+      entryPoints:
+        - websecure
+      rule: "Host(`nut.local0.ardikabs.com`)"
+      service: webnut@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "nut.local0.ardikabs.com"
+
