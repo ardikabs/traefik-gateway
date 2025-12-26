@@ -1,0 +1,12 @@
+http:
+  routers:
+    kuma:
+      entryPoints:
+        - websecure
+      rule: "Host(`kuma.local0.ardikabs.com`)"
+      service: kuma@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "kuma.local0.ardikabs.com"
+
