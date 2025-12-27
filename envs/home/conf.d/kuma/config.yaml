@@ -1,10 +1,42 @@
 http:
   routers:
+
+    kuma-status-allowed:
+      entryPoints:
+        - websecure
+      rule: >
+        Host(`kuma.local0.ardikabs.com`)
+        && Path(`/status`)
+        && ClientIP(`10.252.0.111`)
+      priority: 100
+      service: kuma@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "kuma.local0.ardikabs.com"
+
+    # 2️⃣ Deny all other paths for 10.252.0.111 → 404
+    kuma-ip-deny:
+      entryPoints:
+        - websecure
+      rule: >
+        Host(`kuma.local0.ardikabs.com`)
+        && ClientIP(`10.252.0.111`)
+      priority: 90
+      service: noop@internal
+      middlewares:
+        - return-404
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "kuma.local0.ardikabs.com"
+
     kuma:
       entryPoints:
         - websecure
       rule: "Host(`kuma.local0.ardikabs.com`)"
       service: kuma@docker
+      priority: 10
       tls:
         certResolver: cloudflare
         domains:
