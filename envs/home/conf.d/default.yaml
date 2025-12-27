@@ -22,13 +22,6 @@ http:
         prefixes:
           - "/api"
 
-    return-404:
-      errors:
-        status:
-          - "404"
-        service: noop@internal
-        query: "/"
-
   routers:
     redirect-all:
       rule: HostRegexp(`.*`)
