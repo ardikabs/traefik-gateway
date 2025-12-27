@@ -1,0 +1,12 @@
+http:
+  routers:
+    n8n:
+      entryPoints:
+        - websecure
+      rule: "Host(`node.local0.ardikabs.com`)"
+      service: n8n@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "node.local0.ardikabs.com"
+
