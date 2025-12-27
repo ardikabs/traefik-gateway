@@ -1,12 +1,11 @@
 http:
   routers:
-
     kuma-status-allowed:
       entryPoints:
         - websecure
       rule: >
         Host(`kuma.local0.ardikabs.com`)
-        && Path(`/status`)
+        && PathPrefix(`/status`)
         && ClientIP(`10.252.0.111`)
       priority: 100
       service: kuma@docker
