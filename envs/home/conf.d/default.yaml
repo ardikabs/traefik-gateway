@@ -2,7 +2,7 @@ http:
   middlewares:
     use-sso:
       forwardAuth:
-        address: http://auth.local0.ardikabs.com/
+        address: https://auth.local0.ardikabs.com/
         trustForwardHeader: true
         authResponseHeaders: X-Auth-Request-User,X-Auth-Request-Email,Set-Cookie
 
