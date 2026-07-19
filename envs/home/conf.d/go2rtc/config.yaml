@@ -1,0 +1,14 @@
+http:
+  routers:
+    go2rtc:
+      entryPoints:
+        - websecure
+      rule: "Host(`eyes.local0.ardikabs.com`)"
+      service: go2rtc@docker
+      middlewares:
+        - use-sso
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "eyes.local0.ardikabs.com"
+

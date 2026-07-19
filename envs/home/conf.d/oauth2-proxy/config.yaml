@@ -1,0 +1,12 @@
+http:
+  routers:
+    oauth2-proxy:
+      entryPoints:
+        - websecure
+      rule: "Host(`auth.ardikabs.com`) || Host(`auth.local0.ardikabs.com`) || PathPrefix(`/oauth2/`)"
+      service: oauth2-proxy@docker
+      tls:
+        certResolver: cloudflare
+        domains:
+          - main: "auth.local0.ardikabs.com"
+

@@ -1,5 +1,11 @@
 http:
   middlewares:
+    use-sso:
+      forwardAuth:
+        address: http://oauth2-proxy:4180/
+        trustForwardHeader: true
+        authResponseHeaders: X-Auth-Request-User,X-Auth-Request-Email,Set-Cookie
+
     force-secure:
       headers:
         forceSTSHeader: true
