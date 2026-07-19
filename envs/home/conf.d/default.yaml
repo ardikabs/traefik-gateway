@@ -2,7 +2,7 @@ http:
   middlewares:
     use-sso:
       forwardAuth:
-        address: https://auth.local0.ardikabs.com/
+        address: https://auth.ardikabs.com/
         trustForwardHeader: true
         authResponseHeaders:
           - Authorization
