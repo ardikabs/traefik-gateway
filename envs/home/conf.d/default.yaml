@@ -2,7 +2,7 @@ http:
   middlewares:
     use-sso:
       forwardAuth:
-        address: http://oauth2-proxy:4180/
+        address: http://auth.local0.ardikabs.com/
         trustForwardHeader: true
         authResponseHeaders: X-Auth-Request-User,X-Auth-Request-Email,Set-Cookie
 
